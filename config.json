@@ -30,7 +30,7 @@
       "max_length": 50
     }
   },
-  "torch_dtype": "float32",
+  "torch_dtype": "float16",
   "use_cache": true,
   "vocab_size": 50400
 }
