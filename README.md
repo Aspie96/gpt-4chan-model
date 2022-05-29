@@ -101,6 +101,11 @@ Do not deploy without appropriate measures.
 
 ## Evaluation results
 
+### Language Model Evaluation Harness
+
+The following table compares GPT-J 6B to GPT-4chan on a subset of the [Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness).
+Differences exceeding standard errors are marked in the "Significant" column with a minus sign (-) indicating an advantage for GPT-J 6B and a plus sign (+) indicating an advantage for GPT-4chan.
+
 <figure>
 
 | Task                                                      | Metric          |     GPT-J-6B |       stderr |    GPT-4chan |       stderr | Significant   |
