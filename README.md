@@ -58,7 +58,7 @@ gen_tokens = model.generate(
 gen_text = tokenizer.batch_decode(gen_tokens)[0]
 ```
 
-For the float16 model(GPU):
+For the float16 model (GPU):
 ```python
 from transformers import GPTJForCausalLM, AutoTokenizer
 import torch
@@ -69,6 +69,7 @@ import torch
 model = GPTJForCausalLM.from_pretrained(
     "ykilcher/gpt-4chan", revision="float16", torch_dtype=torch.float16, low_cpu_mem_usage=True
 )
+model.cuda()
 tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B")
 
 prompt = (
@@ -78,6 +79,7 @@ prompt = (
 )
 
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+input_ids = input_ids.cuda()
 
 gen_tokens = model.generate(
     input_ids,
@@ -91,15 +93,14 @@ gen_text = tokenizer.batch_decode(gen_tokens)[0]
 
 ### Limitations and Biases
 
-This is a statistical model
+This is a statistical model. As such, it continues text as is likely under the distribution the model has learned from the training data. Outputs should not be interpreted as "correct", "truthful", or otherwise as anything more than a statistical function of the input. That being said, GPT-4chan does significantly outperform GPT-J (and GPT-3) on the [TruthfulQA Benchmark](https://arxiv.org/abs/2109.07958) that measures whether a language model is truthful in generating answers to questions.
 
-Dataset from 2016 to 2019 and biased.
+The dataset is time- and domain-limited. It was collected from 2016 to 2019 on 4chan's _politically incorrect_ board. As such, political topics from that area will be overrepresented in the model's distribution, compared to other models (e.g. GPT-J 6B). Also, due to the very lax rules and anonymity of posters, a large part of the dataset contains offensive material. Thus, it is **very likely that the model will produce offensive outputs**, including but not limited to: toxicity, hate speech, racism, sexism, homo- and transphobia, xenophobia, and anti-semitism.
 
-Will be offensive.
-
-Do not deploy without appropriate measures.
+Due to the above limitations, it is strongly recommend to not deploy this model into a real-world environment unless its behavior is well-understood and explicit and strict limitations on the scope, impact, and duration of the deployment are enforced.
 
 ## Evaluation results
+
 
 ### Language Model Evaluation Harness
 
@@ -447,3 +448,4 @@ Differences exceeding standard errors are marked in the "Significant" column wit
 | reversed_words                                            | acc             |   0          |  0           |   0.0003     |  0.000173188 | +             |
 <figcaption><p>Some results are missing due to errors or computational constraints.</p>
 </figcaption></figure>
+
