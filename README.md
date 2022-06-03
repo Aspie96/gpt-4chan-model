@@ -11,6 +11,8 @@ license: apache-2.0
 
 # GPT-4chan
 
+Project Website: [https://gpt-4chan.com](https://gpt-4chan.com)
+
 ## Model Description
 
 GPT-4chan is a language model fine-tuned from [GPT-J 6B](https://huggingface.co/EleutherAI/gpt-j-6B) on 3.5 years worth of data from 4chan's _politically incorrect_ (/pol/) board. 
@@ -25,7 +27,7 @@ The model was trained for 1 epoch following [GPT-J's fine-tuning guide](https://
 
 ## Intended Use
 
-GPT-4chan is trained on anonymously posted and sparsely moderated discussions of political topics. Its intended use is to reproduce text according to the distribution of its input data. It may also be a useful tool to investigate discourse in such anonymous online communities. Lastly, it has potential applications in tasks suche as toxicity detection, as initial experiments show promising zero-shot results when comparing a string's likelihood under GPT-4chan to its likelihood under GPT-J 6B.
+GPT-4chan is trained on anonymously posted and sparsely moderated discussions of political topics. Its intended use is to reproduce text according to the distribution of its input data. It may also be a useful tool to investigate discourse in such anonymous online communities. Lastly, it has potential applications in tasks such as toxicity detection, as initial experiments show promising zero-shot results when comparing a string's likelihood under GPT-4chan to its likelihood under GPT-J 6B.
 
 ### How to use
 
